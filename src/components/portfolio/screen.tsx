@@ -4,7 +4,7 @@ import { BreakoutGame } from '@/components/games/breakout-game';
 import { SnakeGame } from '@/components/games/snake-game';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ArrowUpRight, BatteryFull, ChevronRight, Home } from 'lucide-react';
-import { useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import type { DeviceMode } from '@/lib/device-layout';
 import { sections } from '@/data/portfolio';
 import { SectionContent } from './section-content';
@@ -12,12 +12,19 @@ import type { NavigationController } from '@/hooks/use-navigation';
 
 export type ScreenProps = { navigation: NavigationController; reduced: boolean; mode?: DeviceMode };
 export function Screen({ navigation, reduced, mode = 'classic' }: ScreenProps) {
+  const [clock, setClock] = useState(() => formatClock(new Date()));
   const { state, screenRef, syncScreen } = navigation;
   const section = sections[state.selected];
   useLayoutEffect(() => { syncScreen(state, mode); }, [state, mode, syncScreen]);
+  useEffect(() => {
+    const update = () => setClock(formatClock(new Date()));
+    update();
+    const timer = window.setInterval(update, 1000);
+    return () => window.clearInterval(timer);
+  }, []);
 
   return <div ref={screenRef} data-mode={mode} className={`device-screen screen-${mode}${state.game ? ' screen-gaming' : ''}`}>
-    <div className="screen-status"><span><i /> {mode === 'wide' ? 'CHAPTER LIBRARY' : 'PORTFOLIO OS'}</span><span>01.00 <BatteryFull size={15} /></span></div>
+    <div className="screen-status"><span><i /> {mode === 'wide' ? 'CHAPTER LIBRARY' : 'PORTFOLIO OS'}</span><span aria-label={`Current time ${clock}`}>{clock} <BatteryFull size={15} /></span></div>
     <motion.div className="screen-view" key={state.open ? section.id : 'menu'} initial={{ opacity: reduced ? 1 : 0 }} animate={{ opacity: 1 }} transition={{ duration: reduced ? 0 : 0.14 }}>
       {state.game === 'breakout' ? <BreakoutGame navigation={navigation} /> : state.game === 'snake' ? <SnakeGame navigation={navigation} /> : state.open ? <>
         <div className="detail-heading"><span>{section.eyebrow}</span><button aria-label="Back to previous screen" {...navigation.bind('back')}><ArrowLeft size={16} /></button></div>
@@ -43,4 +50,8 @@ export function Screen({ navigation, reduced, mode = 'classic' }: ScreenProps) {
     <div className="screen-input-hint" aria-live="polite">{state.game === 'breakout' ? '←→ Paddle · A Launch / pause · B Games' : state.game ? 'D-pad Move · A Play / pause · B Games' : state.open ? '↑↓ Read · ←→ Choices · A Activate · B Back' : mode === 'wide' ? '↑↓ Rows · ←→ Columns · A Open' : '↑↓ Select · A Open · B Back'}</div>
     <div className="screen-footer"><span>SEVEN CHAPTERS / PORTFOLIO</span><button {...navigation.bind('home')} aria-label="Return home"><Home size={12} /> HOME</button></div>
   </div>;
+}
+
+function formatClock(date: Date) {
+  return date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false });
 }
