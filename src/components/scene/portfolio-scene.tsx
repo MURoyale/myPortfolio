@@ -20,8 +20,9 @@ function World(props: ScreenProps & { mode: DeviceMode; requestedMode: DeviceMod
   const projected = useMemo(() => [new Vector3(), new Vector3(), new Vector3()], []);
   const desktop = size.width > 900;
   // Fit the entire hardware and its projected HTML plane to the same bounds.
+  const mobileFit = props.mode === 'classic' ? 0.62 : 0.8;
   const scale = desktop ? Math.min(size.height / 720, size.width / 1350, 1.12)
-    : Math.min((size.width - 24) / (layout.width * 0.8), (size.height - 48) / (layout.height * 0.8), 1.12);
+    : Math.min((size.width - 16) / (layout.width * mobileFit), (size.height - 40) / (layout.height * 0.8), 1.35);
   const deviceScale = props.mode === 'wide' && desktop ? Math.min(1, (size.width * 0.53) / (layout.width / 100 * 80 * scale)) : 1;
   const x = desktop ? size.width / 80 * 0.20 : 0;
   useEffect(() => {

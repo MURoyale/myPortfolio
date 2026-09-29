@@ -993,6 +993,7 @@ h1>span:first-of-type {
   .intro h1 { font-size:clamp(38px, 10vw, 57px); }
   .intro p { margin-bottom:0; }
   .scene-stage { position:relative; inset:auto; width:100%; height:clamp(380px, 110cqw, 540px); flex:none; }
+  .scene-stage.mode-classic { height:clamp(470px, 145cqw, 700px); }
   .scene-caption { position:relative; inset:auto; margin:4px 16px 22px; flex-wrap:wrap; }
   .site-footer { margin:0 7%; }
   .project-note { padding:0 16px 16px; }
