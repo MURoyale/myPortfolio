@@ -129,14 +129,6 @@ h1 {
 h1>span:first-of-type {
   color:var(--mint);
 }
-.headline-star {
-  display:inline-block;
-  position:absolute;
-  font-size:48px;
-  color:var(--mint);
-  right:-55px;
-  top:8px;
-}
 .intro p {
   font-size:14px;
   line-height:1.9;
@@ -589,10 +581,6 @@ h1>span:first-of-type {
   h1 {
     font-size:62px;
   }
-  .headline-star {
-    right:-35px;
-    font-size:35px;
-  }
   .intro p {
     font-size:12px;
   }
@@ -624,12 +612,6 @@ h1>span:first-of-type {
   }
   h1>span:first-of-type {
     margin-left:12px;
-  }
-  .headline-star {
-    position:static;
-    margin-left:20px;
-    vertical-align:top;
-    font-size:38px;
   }
   .intro p {
     font-size:13px;
@@ -681,10 +663,6 @@ h1>span:first-of-type {
   }
   h1 {
     font-size:48px;
-  }
-  .headline-star {
-    font-size:29px;
-    margin-left:10px;
   }
   .intro p {
     font-size:12px;

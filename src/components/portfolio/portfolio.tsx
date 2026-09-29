@@ -53,7 +53,7 @@ export default function Portfolio() {
       </div>
     </header>
     <section className="experience" aria-label="Interactive portfolio">
-      <div className="intro"><div className="eyebrow"><span className="tiny-line" /> {profile.title.toUpperCase()}</div><h1>Small device.<br />A whole<br /><span>new world.</span><span className="headline-star">✳</span></h1><p>A familiar feeling. A different way to explore.<br />Pick up a chapter and discover what’s inside.</p><div className="intro-footnote"><span>01 — 07</span> SEVEN CHAPTERS. ONE LITTLE WORLD.</div></div>
+      <div className="intro"><div className="eyebrow"><span className="tiny-line" /> {profile.title.toUpperCase()}</div><h1>Small device.<br />A whole<br /><span>new world.</span></h1><p>A familiar feeling. A different way to explore.<br />Pick up a chapter and discover what’s inside.</p><div className="intro-footnote"><span>01 — 07</span> SEVEN CHAPTERS. ONE LITTLE WORLD.</div></div>
       <div id="explore" className={`scene-stage mode-${mode}`} tabIndex={0} aria-label="Portfolio device. Up and Down select or read. A, Enter or Space activate. B, Backspace or Escape go back. Home returns to the menu." aria-describedby="control-help">
         {!unavailable && supported && <SceneBoundary onFail={() => setFailed(true)}><Scene {...screenProps} mode={mode} onReady={() => setReady(true)} /></SceneBoundary>}
         {!unavailable && !ready && <div className="loading" role="status"><Gamepad2 size={30} /><span>Booting your little world…</span></div>}
