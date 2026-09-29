@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Retro game controller icon">
+  <rect width="64" height="64" rx="14" fill="#10251f"/>
+  <path d="M16 25c1.6-6 6.2-9 12-9h8c5.8 0 10.4 3 12 9l4 16c1.2 5-1.5 8-5.1 8-2.3 0-4.1-1.1-5.8-3.1l-3.2-3.8H26.1l-3.2 3.8c-1.7 2-3.5 3.1-5.8 3.1-3.6 0-6.3-3-5.1-8l4-16Z" fill="#d6e5b4" stroke="#8fb29b" stroke-width="2"/>
+  <path d="M22 27v12M16 33h12" stroke="#29432f" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="41" cy="30" r="3" fill="#52735b"/>
+  <circle cx="48" cy="36" r="3" fill="#52735b"/>
+</svg>
